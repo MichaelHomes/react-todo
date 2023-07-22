@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-export const TodoItem = () => {
+export const TodoItem = ({ task, edit, index, handleDelete, handleToggle }) => {
   return (
-    <div className="item">
+    <div className={`item ${task.done && "done"}`}>
       <div className="checkbox-wrapper">
-        <input type="checkbox" />
+        <input type="checkbox" onChange={() => handleToggle(index)} />
       </div>
-      <span>Task</span>
-      <button>Edit</button>
-      <button>X</button>
+      <span>{task.text}</span>
+      <button onClick={() => edit(index)}>Edit</button>
+      <button onClick={() => handleDelete(index)}>X</button>
     </div>
   );
 };
